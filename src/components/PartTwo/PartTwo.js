@@ -9,7 +9,7 @@ const PartTwo = ({ handleChange, setParts, localData }) => {
             <button type="button" onClick={handlePrevious}>Previous</button>
             <br />
             <br />
-            <input type="email" placeholder="email" name="email" onChange={handleChange} value={localData?.email || ''} />
+            <input autoFocus required type="email" placeholder="email" name="email" onChange={handleChange} value={localData?.email || ''} />
             <br />
             <br />
             <input type="submit" value="Submit" />
