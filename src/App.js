@@ -6,7 +6,7 @@ import PartTwo from './components/PartTwo/PartTwo';
 function App() {
   const [parts, setParts] = useState('part1');
   const [data, setData] = useState({});
-  const [localdata, setlocalData] = useState({});
+  const [localData, setLocalData] = useState({});
   const handleChange = e => {
     const field = e.target.name;
     const value = e.target.value;
@@ -19,14 +19,15 @@ function App() {
   useEffect(() => {
     const localData = localStorage.getItem("info");
     const parses = JSON.parse(localData);
-    setlocalData(parses);
+    setLocalData(parses);
   }, [data])
 
 
   const handleStore = e => {
-    e.target.reset();
     console.log('local not ', data);
-    console.log(localdata);
+    console.log(localData);
+    localStorage.removeItem("info");
+    setData({})
     e.preventDefault();
   }
 
@@ -35,7 +36,7 @@ function App() {
     <div className="App">
       <header>
         <form onSubmit={handleStore}>
-          {parts === "part1" ? <PartOne setParts={setParts} handleChange={handleChange} localdata={localdata}></PartOne> : <PartTwo setParts={setParts} handleChange={handleChange} localdata={localdata}></PartTwo>}
+          {parts === "part1" ? <PartOne setParts={setParts} handleChange={handleChange} localData={localData}></PartOne> : <PartTwo setParts={setParts} handleChange={handleChange} localData={localData}></PartTwo>}
         </form>
       </header>
     </div>
